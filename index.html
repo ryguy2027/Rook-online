@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rook Online — Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <section id="home" class="screen active">
+      <div class="card hero">
+        <div class="rook-logo">R</div>
+        <h1>Rook Online</h1>
+        <p class="muted">A phone-friendly multiplayer prototype.</p>
+        <button id="createBtn" class="primary">Create Game</button>
+        <button id="joinBtn">Join Game</button>
+        <button id="rulesBtn" class="ghost">How to Play</button>
+      </div>
+    </section>
+
+    <section id="lobby" class="screen">
+      <div class="card">
+        <button class="back" data-back="home">← Back</button>
+        <h2>Game Lobby</h2>
+        <p class="muted">Room code</p>
+        <div id="roomCode" class="room-code">------</div>
+        <p>Share this code with the other players.</p>
+        <input id="playerName" maxlength="16" placeholder="Your name">
+        <button id="startLocalBtn" class="primary">Start Demo Game</button>
+        <p class="small muted">This first version runs the game locally in your browser. Online rooms come in the next version.</p>
+      </div>
+    </section>
+
+    <section id="game" class="screen">
+      <div class="topbar">
+        <button class="back" data-back="home">← Home</button>
+        <span id="turnLabel"></span>
+        <button id="newGameBtn" class="ghost">New</button>
+      </div>
+
+      <div id="scoreboard" class="scoreboard"></div>
+
+      <div class="table">
+        <div class="opponent" id="p1"></div>
+        <div class="opponent left" id="p2"></div>
+        <div class="opponent right" id="p3"></div>
+        <div id="trick" class="trick"></div>
+        <div id="message" class="message"></div>
+      </div>
+
+      <div class="hand-area">
+        <div class="label">Your hand</div>
+        <div id="hand" class="hand"></div>
+      </div>
+    </section>
+
+    <section id="rules" class="screen">
+      <div class="card">
+        <button class="back" data-back="home">← Back</button>
+        <h2>Prototype Rules</h2>
+        <ul>
+          <li>This prototype uses a 4-player, 56-card Rook-style deck.</li>
+          <li>Each player receives 14 cards.</li>
+          <li>The Rook card is included as a special high card.</li>
+          <li>For now, the prototype skips bidding and lets you play tricks.</li>
+          <li>Play one card when it is your turn. The highest card in the lead color wins the trick.</li>
+          <li>The Rook wins the trick in this prototype.</li>
+        </ul>
+        <p class="small muted">This is a foundation for the eventual online version, not a complete implementation of every Rook ruleset.</p>
+      </div>
+    </section>
+
+    <dialog id="joinDialog">
+      <form method="dialog" class="card dialog-card">
+        <h3>Join Game</h3>
+        <input id="joinCode" maxlength="6" placeholder="Room code" inputmode="numeric">
+        <button value="join" class="primary">Join</button>
+        <button value="cancel" class="ghost">Cancel</button>
+      </form>
+    </dialog>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
